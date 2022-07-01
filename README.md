@@ -15,7 +15,8 @@ Il dataset presenta alcuni problemi evidenti:
 1. **Allineamento**: alcune coppie presentano un numero discorde di slices  *n_f*. Con questo si intende che il numero di slices nell'input_cube è diverso dal numero di slices nel target_cube, con un risultante sfasamento in frequenza tra i due cubi. E' molto importante, per qualunque metodo che cerchi di risolvere il problema di imaging, che le strutture morfologiche dell'input_cube corrispondano, per ogni slice, alle segmentazioni nel target_cube. Per risolvere questo problema è necessario allineare i due cubi eseguendo dei tagli in frequenza a partire da un punto di riferimento morfologico comune;
 2. **Gridding**: le dimensioni fisiche dei pixel in mm variano da cubo a cubo. E' necessario standardizzare le dimensioni scegliendone una opportuna e transformando tutti i cubi in modo che rispettino tali dimensioni.
 Questi due problemi vanno risolti prima di poter continuare.
-## Analisi Statisitca
+## Analisi Statistica
 Prima di poter utilizzare il dataset, è necessario eseguire un'analisi delle sue caratteristiche al fine di:
 1. Caratterizzare le proprietà morfologiche delle strutture che cerchiamo di individuare. Questo significa utilizzare il cubo di segmentazione per misurare le proprietà geometriche dei diversi gruppi di pixel che condividono lo stesso intero e sono contigui nel cubo. Proprietà interessanti sono:
 la frequenza delle classi misurata come il rapporto tra i pixel appartententi ad una data classe ed il numero di pixel totali del cubo, le dimensioni spaziali ed in frequenza medie delle strutture appartenenti alle diverse classi, il rapporto segnale rumore delle strutture rispetto al fondo (naturalmente il rapporto segnale rumore va misurato nell'input_cube).
+1. Eliminazione di outliers e artefatti: i cubi potrebbero contenere dei valori fuori scala dovuti alla presenza di problematiche nell'acquisizione dei dati. Questi valori fuori scala, vanno preventivamente rimossi dal cubo. 
